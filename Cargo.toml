@@ -1,0 +1,26 @@
+[package]
+name = "git-ignore-cli"
+version = "1.0.0"
+edition = "2024"
+rust-version = "1.85"
+description = "A CLI tool to manage .gitignore files"
+license = "MIT"
+repository = "https://github.com/uradical/git-ignore-cli"
+keywords = ["git", "gitignore", "cli"]
+categories = ["command-line-utilities", "development-tools"]
+
+[[bin]]
+name = "git-ignore"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+clap_complete = "4"
+reqwest = { version = "0.12", features = ["blocking"] }
+anyhow = "1"
+dirs = "5"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
