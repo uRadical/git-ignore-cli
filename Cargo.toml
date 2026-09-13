@@ -1,6 +1,6 @@
 [package]
 name = "git-ignore-cli"
-version = "1.0.0"
+version = "2.0.0"
 edition = "2024"
 rust-version = "1.85"
 description = "A CLI tool to manage .gitignore files"
@@ -19,6 +19,10 @@ clap_complete = "4"
 reqwest = { version = "0.12", features = ["blocking"] }
 anyhow = "1"
 dirs = "5"
+# Pinned: 0.4.30 uses let-chains (needs Rust 1.88) but declares no rust-version,
+# so the MSRV-aware resolver picks it and the 1.85 build fails. 0.4.31+ declare
+# 1.88 honestly. Unpin if rust-version is ever raised to 1.88.
+ignore = "=0.4.29"
 
 # The profile that 'dist' will build with
 [profile.dist]
